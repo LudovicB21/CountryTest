@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableHead, TableRow, Paper, TableContainer} from "@material-ui/core"
-import {Link} from 'react-router-dom'
+import {Card,Typography, CardActionArea, CardContent, CardMedia} from "@material-ui/core"
 
 const styles = theme => ({
   root: {
@@ -14,10 +14,10 @@ const styles = theme => ({
   },
   rootCard: {
     maxWidth: 300,
-    margin: "20px",
+    marginTop: "20px"
   },
   media: {
-    height: 140,
+    height: 100,
   },
 });
 
@@ -34,22 +34,50 @@ class InfoPays extends Component {
                 <TableRow>
                   <TableCell>Nom du pays</TableCell>
                   <TableCell align="right">Drapeau</TableCell>
+                  <TableCell align="right">Population</TableCell>
+                  <TableCell align="right">Numéro</TableCell>
+                  <TableCell align="right">Région / Sous-région </TableCell>
+                  <TableCell align="right">Devises</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-              {this.state.items.map(pays => (
-              <Link to={{pathname: `/VersionClassMaterialUi/${pays.name}`, query: {pays}}}>
-                    <TableRow>
-                      <TableCell component="th" scope="row">
-                        {pays.name}
-                      </TableCell>
-                      <TableCell align="right"> <img src={pays.flag} style={{width: "50px", height: "50px"}} alt="drapeau"/></TableCell>
-                    </TableRow>
-              </Link>
-              ))}
-              </TableBody>
+                <TableRow >
+                  <TableCell component="th">
+                    {data.name}
+                  </TableCell>
+                  <TableCell align="right"><img src={data.flag} style={{width: "50px", height: "50px"}} /></TableCell>
+                  <TableCell align="right">{data.population}</TableCell>
+                  <TableCell align="right">{data.alpha3Code}</TableCell>
+                  <TableCell align="right">{data.region} / {data.subregion}</TableCell>
+                </TableRow>
+            </TableBody>
             </Table>
           </TableContainer>
+
+
+          <Card className={this.props.classes.rootCard}>
+            <CardActionArea>
+              <CardMedia
+                className={this.props.classes.media}
+                image={data.flag}
+                title="drapeau"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {data.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Population : {data.population}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Numéro : {data.alpha3Code}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Région / Sous-Région: {data.region} / {data.subregion}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
       </div>
     )
   }

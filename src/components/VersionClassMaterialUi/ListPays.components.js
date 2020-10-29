@@ -31,7 +31,7 @@ class Pays extends Component{
       <h1>List des pays dans le monde MaterialUi </h1>
         <ul className="list-group">
           {this.state.items.map(pays => {
-            return (<Link to={{pathname: `/VersionClassBootstrap/${pays.name}`, query: {pays}}}>
+            return (<Link to={{pathname: `/VersionClassMaterialUi/${pays.name}`, query: {pays}}}>
               <li key={pays.alpha3Code} className="list-group-item">
                 {pays.name} <img src={pays.flag} style={{width: "50px", height: "50px"}} alt="drapeau" />
               </li>
