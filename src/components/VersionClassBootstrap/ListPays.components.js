@@ -6,7 +6,8 @@ class Pays extends Component{
     items: []
   }
 
-  componentDidMount(){
+
+  getData(){
     fetch(
       "https://restcountries.eu/rest/v2/all"
     )
@@ -14,6 +15,10 @@ class Pays extends Component{
     .then(responseJson => {
       this.setState({items: responseJson})
     })
+  }
+
+  componentDidMount(){
+    this.getData()
   }
   
   render(){
