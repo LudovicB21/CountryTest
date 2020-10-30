@@ -9,10 +9,7 @@ function Pays(){
   const [items, setItems] = useState([]);
    const fetchItems = async () => {
     const data = await fetch(
-      "https://restcountries.eu/rest/v2/all",
-        {
-          headrs:{"Access-Control-Allow-Origin": "*"}
-        }
+      "https://restcountries.eu/rest/v2/all"
     )
     const items = await data.json()
     setItems(items);
