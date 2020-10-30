@@ -23,4 +23,5 @@ Elle doit appeler une API qui retournera la liste des pays. Pour chaque pays ret
 
 ## A rajouter
 
-* Changements CSS pour le listing des pays. 
+* Changements CSS pour le listing des pays.
+* Mise en place d'un context pour l'appel API
